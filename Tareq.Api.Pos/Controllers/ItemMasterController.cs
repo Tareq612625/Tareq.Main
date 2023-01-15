@@ -22,7 +22,7 @@ namespace Tareq.Api.Pos.Controllers
 
         // GET: api/<ItemMasterController>
         [HttpGet]
-        public IActionResult Getall()
+        public IActionResult Getall(int? page)
         {
             if (_itemMaster.Getall().Count() == 0)
             {

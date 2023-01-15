@@ -29,6 +29,21 @@ namespace Tareq.Api.Pos.Services
         {
             return _db.ItemMaster.Include(c => c.Units).Include(c => c.ItemCatagorys).Include(c => c.ItemGroups).Where(c => c.ItemId == id).FirstOrDefault();
         }
+        //save for Graphql
+        public ItemMaster GrapQlSave(ItemMaster item)
+        {
+            try
+            {
+                _db.Add(item);
+                _db.SaveChanges();
+                return item;
+            }
+            catch (Exception ex) {
+                item.ItemName = ex.Message;
+                return item;
+            }
+            
+        }
 
         public void Insert(ItemMaster item)
         {

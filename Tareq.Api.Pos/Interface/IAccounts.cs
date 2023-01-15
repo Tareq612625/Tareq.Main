@@ -1,6 +1,5 @@
 ﻿using Tareq.Model;
 using Tareq.Model.Pos;
-using XAct.Library.Settings;
 
 namespace Tareq.Api.Pos.Interface
 {

@@ -12,5 +12,8 @@ namespace Tareq.Api.Pos.Interface
         void Delete(ItemMaster item);
         TransactionResult Save();
 
+        //for grapQl
+        ItemMaster GrapQlSave(ItemMaster item);
+
     }
 }

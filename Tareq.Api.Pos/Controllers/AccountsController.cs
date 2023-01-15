@@ -8,12 +8,12 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using XAct.Users;
+//using XAct.Users;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
-using XAct;
+//using XAct;
 
-namespace Tareq.Api.Pos.Controllers
+namespace Tareq.Api.Pos.ControllersB
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -42,12 +42,14 @@ namespace Tareq.Api.Pos.Controllers
         }
         // GET api/<UnitController>/5
         [HttpGet("{id}")]
+        [Authorize]
         public IActionResult Get(string UserId)
         {
             return Ok(_Accounts.GetById(UserId) == null ? NotFound("No Data Found") : _Accounts.GetById(UserId));
         }
         // POST api/<UnitController>
         [HttpPost]
+        [Authorize]
         public TransactionResult Post(AppUser obj)
         {
             obj.CreateDevice = TareqUtility.GetRemoteIPAddress().ipAddress;
@@ -62,6 +64,7 @@ namespace Tareq.Api.Pos.Controllers
 
         // PUT api/<UnitController>/5
         [HttpPut("{id}")]
+        [Authorize]
         public TransactionResult Put(AppUser obj)
         {
             obj.UpdateDevice = TareqUtility.GetRemoteIPAddress().ipAddress;
@@ -71,6 +74,7 @@ namespace Tareq.Api.Pos.Controllers
 
         // DELETE api/<UnitController>/5
         [HttpDelete("{id}")]
+        [Authorize]
         public TransactionResult Delete(AppUser obj)
         {
             _Accounts.Delete(obj);
@@ -101,7 +105,6 @@ namespace Tareq.Api.Pos.Controllers
                 };
                 var token = tokenhandler.CreateToken(tokendesc);
                 string finalToken = tokenhandler.WriteToken(token);
-
 
                 tokenResponse.JWTToken = finalToken;
                 tokenResponse.RefreshToken = _RefreshTokenGenerator.GenerateToken(loginInfo.UserId);

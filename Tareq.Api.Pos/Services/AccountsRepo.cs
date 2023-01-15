@@ -2,7 +2,6 @@
 using Tareq.Api.Pos.Interface;
 using Tareq.Model;
 using Tareq.Model.Pos;
-using XAct.Users;
 
 namespace Tareq.Api.Pos.Services
 {
