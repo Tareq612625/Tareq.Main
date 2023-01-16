@@ -1,0 +1,32 @@
+﻿-------------------------Data Mutation (Post Method)----------------------
+mutation add($ItemMasterInput:ItemMasterInput){  
+  createItemMaster(itemMaster: $ItemMasterInput) {
+    itemId
+  }
+}
+----Parameter pass----
+{"ItemMasterInput":{
+    "itemName":"Kayes Item",
+    "itemDescription":"new item details",
+    "unitId":1,
+    "groupId":1,
+  	"catagoryId":1,
+    "itemKeyword":"new item keyword",
+    "itemRate":1000
+}}
+------------------select data (Get Data)--------------
+query
+{
+  itemMaster {
+    itemId
+    itemName
+    itemDescription
+    unitId
+    groupId
+    catagoryId
+    itemKeyword
+    itemRate
+    isActive
+    itemImage
+  }
+}
